@@ -11,12 +11,13 @@ class Category {
     required this.name,
     required this.imageUrl,
     this.color,
-    factory Category.fromMap(Map<String, dynamic> map) {
+  });
+
+  factory Category.fromMap(Map<String, dynamic> map) {
     return Category(
       id: map['id'] ?? '',
       name: map['name'] ?? '',
       imageUrl: map['imageUrl'] ?? '',
     );
   }
-});
 }

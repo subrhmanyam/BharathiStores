@@ -29,13 +29,25 @@ class ProductCard extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
+                width: double.infinity,
                 decoration: BoxDecoration(
                   color: AppColors.greyColor.withValues(alpha: 0.1),
                   borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+                  image: product.imageUrl.isNotEmpty
+                      ? DecorationImage(
+                          image: NetworkImage(product.imageUrl),
+                          fit: BoxFit.cover,
+                          onError: (exception, stackTrace) {
+                             // Fallback handled by color/placeholder if needed, or use imageBuilder
+                          },
+                        )
+                      : null,
                 ),
-                child: Center(
-                  child: Icon(Icons.shopping_bag, size: 40, color: AppColors.primaryColor.withValues(alpha: 0.5)),
-                ),
+                child: product.imageUrl.isEmpty 
+                    ? Center(
+                        child: Icon(Icons.shopping_bag, size: 40, color: AppColors.primaryColor.withValues(alpha: 0.5)),
+                      )
+                    : null,
               ),
             ),
             Padding(

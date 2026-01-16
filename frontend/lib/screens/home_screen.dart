@@ -12,7 +12,7 @@ import 'category_screen.dart';
 import 'product_detail_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
 
   final ApiService _apiService = ApiService();
 
@@ -20,7 +20,14 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset('assets/images/logo.jpg', height: 40),
+        title: SizedBox(
+          height: 50, // Constrain height to fit bar
+          child: Image.asset(
+            'assets/images/logo_cropped.png',
+            fit: BoxFit.contain, // Ensure it scales properly
+          ),
+        ),
+        centerTitle: true,
         backgroundColor: AppColors.primaryColor,
         foregroundColor: AppColors.whiteColor,
         actions: [
